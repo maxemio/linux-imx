@@ -9,7 +9,8 @@
 /* #define WIFI */
 /* #define EMMC */
 #define  NAND
-#include "imx6ul-var-dart.dtsi"
+
+#include "imx6ul-var-dart-6ulcustomboard-nand-sd-card.dts"
 
 //Soup up the I2C interface to the XMEGA to 1MHz
 &i2c1 {

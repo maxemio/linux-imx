@@ -580,5 +580,5 @@ CONFIG_EXT4_FS=y
 CONFIG_EXT4_FS_POSIX_ACL=y
 CONFIG_EXT4_FS_SECURITY=y
 
-# disable HighMem support
-CONFIG_HIGHMEM=n
+# don't reserve memory for CMA
+CONFIG_CMA_SIZE_MBYTES=0

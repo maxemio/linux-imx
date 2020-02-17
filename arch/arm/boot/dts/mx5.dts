@@ -11,10 +11,6 @@
 #define  NAND
 #include "imx6ul-var-dart.dtsi"
 
-&lcdif {
-        status = "disabled";
-};
-
 //Soup up the I2C interface to the XMEGA to 1MHz
 &i2c1 {
         clock-frequency = <1000000>;
@@ -41,6 +37,16 @@
                                 MX6UL_PAD_LCD_VSYNC__UART4_DCE_RTS      0x1b0b1
                         >;
                 };
+
+                /* UART to RS485 */
+                pinctrl_uart5: uart5grp {       /* RX/TX RTS/CTS */
+                        fsl,pins = <
+                                MX6UL_PAD_CSI_DATA00__UART5_DCE_TX      0x1b0b1
+                                MX6UL_PAD_CSI_DATA01__UART5_DCE_RX      0x1b0b1
+                                MX6UL_PAD_CSI_DATA03__UART5_DCE_CTS     0x1b0b1
+                                MX6UL_PAD_CSI_DATA03__UART5_DTE_RTS     0x1b0b1
+                        >;
+                };
         };
 };
 
@@ -48,6 +54,14 @@
 &uart4 {
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_uart4>;
+        fsl,uart-has-rtscts;
+        status = "okay";
+};
+
+/* UART to 1st 485 interface */
+&uart5 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_uart5>;
         fsl,uart-has-rtscts;
         status = "okay";
 };
@@ -84,4 +98,24 @@
         status = "disabled";
 };
 
+&gpmi {
+    pinctrl-names = "default";
+    pinctrl-0 = <&pinctrl_gpmi_nand_1>;
+    fsl,legacy-bch-geometry;
+    status = "okay";
+
+    partition@0 {
+        label = "spl";
+        reg = <0x00000000 0x00200000>;
+    };
+
+    partition@1 {
+        label = "uboot";
+        reg = <0x00200000 0x00200000>;
+    };
+    partition@2 {
+        label = "rootfs";
+        reg = <0x00400000 0x0fe00000>;
+    };
+};
 

@@ -580,8 +580,8 @@ CONFIG_EXT4_FS=y
 CONFIG_EXT4_FS_POSIX_ACL=y
 CONFIG_EXT4_FS_SECURITY=y
 
-# don't reserve memory for CMA
-CONFIG_CMA_SIZE_MBYTES=0
+# reserve memory for CMA (uart)
+CONFIG_CMA_SIZE_MBYTES=16
 
 #Disable evbug module
 CONFIG_INPUT_EVBUG=n

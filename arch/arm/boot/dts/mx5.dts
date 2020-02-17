@@ -114,8 +114,20 @@
         reg = <0x00200000 0x00200000>;
     };
     partition@2 {
-        label = "rootfs";
-        reg = <0x00400000 0x0fe00000>;
+      label = "main-rootfs";
+        reg = <0x00400000 0x06400000>;
+    };
+        partition@3 {
+        label = "fallback-rootfs";
+        reg = <0x06800000 0x06400000>;
+    };
+        partition@4 {
+        label = "config";
+        reg = <0x0CC00000 0x01E00000>;
+    };
+        partition@5 {
+        label = "keys";
+        reg = <0x0EA00000 0x01A00000>;
     };
 };
 

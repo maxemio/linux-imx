@@ -585,3 +585,16 @@ CONFIG_CMA_SIZE_MBYTES=16
 
 #Disable evbug module
 CONFIG_INPUT_EVBUG=n
+
+# software-controlled idle processor power management
+CONFIG_CPU_IDLE=y
+
+# enables support for Freescale i.MX6 UltraLite processor
+CONFIG_SOC_IMX6UL=y
+
+# Power state stuff
+CONFIG_ARM_PSCI=y
+
+# by https://community.nxp.com/thread/494431
+CONFIG_TEE=y
+CONFIG_OPTEE=y

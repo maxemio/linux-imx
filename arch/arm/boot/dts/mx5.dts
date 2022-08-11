@@ -18,8 +18,6 @@
 //Soup up the I2C interface to the XMEGA to 1MHz
 &i2c1 {
         clock-frequency = <1000000>;
-        pinctrl-names = "default";
-        pinctrl-0 = <&pinctrl_i2c1>;
         status = "okay";
 };
 
@@ -82,14 +80,6 @@
         status = "okay";
 };
 
-&flexcan1 {
-        status = "disabled";
-};
-
-&flexcan2 {
-        status = "disabled";
-};
-
 &lcdif {
         status = "disabled";
 };
@@ -108,9 +98,6 @@
 
 
 &gpmi {
-    pinctrl-names = "default";
-    pinctrl-0 = <&pinctrl_gpmi_nand_1>;
-    fsl,legacy-bch-geometry;
     status = "okay";
 
     partition@0 {
